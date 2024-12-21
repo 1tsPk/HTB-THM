@@ -1,0 +1,16 @@
+Gobuster:gobuster dir -u http://10.10.10.121/ -w /usr/share/seclists/Discovery/Web-Content/common.txt
+git clone https://github.com/danielmiessler/SecLists
+sudo apt install seclists -y
+gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
+Banner grabing : curl -IL https://www.inlanefreight.com
+whatweb 10.10.10.121
+
+Platform to learn metsploit:
+    Granny/Grandpa
+    Jerry
+    Blue
+    Lame
+    Optimum
+    Legacy
+    Devel
+
